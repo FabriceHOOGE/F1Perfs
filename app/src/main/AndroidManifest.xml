@@ -18,12 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".NewTimeActivity"></activity>
-=======
-        <activity android:name=".NewTime"></activity>
         <activity android:name=".SearchActivity"></activity>
->>>>>>> origin/master
+
     </application>
 
 </manifest>

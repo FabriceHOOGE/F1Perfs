@@ -1,0 +1,5 @@
+<resources>
+    <string name="menu_txtBackHome">Retour à l\'accueil</string>
+    <string name="menu_txtRecord">Enregistrer un temps</string>
+    <string name="menu_txtSearch">Rechercher un temps</string>
+</resources>

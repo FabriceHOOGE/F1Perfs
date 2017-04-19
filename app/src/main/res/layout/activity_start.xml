@@ -79,7 +79,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="00:00.000"
+                android:text="-"
                 android:textColor="#000" />
 
             <TextView
@@ -89,7 +89,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Nürburgring"
+                android:text="-"
                 android:textColor="#000" />
 
             <TextView
@@ -99,7 +99,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="John MCFLY"
+                android:text="-"
                 android:textColor="#000" />
         </TableRow>
 

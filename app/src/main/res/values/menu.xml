@@ -1,0 +1,5 @@
+<resources>
+    <string name="menu_txtBackHome">Back to home</string>
+    <string name="menu_txtRecord">Record a performance</string>
+    <string name="menu_txtSearch">Search a performance</string>
+</resources>

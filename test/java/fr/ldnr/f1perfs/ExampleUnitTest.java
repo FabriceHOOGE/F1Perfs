@@ -1,4 +1,4 @@
-package fr.ldnr.f1prefs;
+package fr.ldnr.f1perfs;
 
 import org.junit.Test;
 

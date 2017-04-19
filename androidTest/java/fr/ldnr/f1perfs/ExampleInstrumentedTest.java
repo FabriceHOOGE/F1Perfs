@@ -1,4 +1,4 @@
-package fr.ldnr.f1prefs;
+package fr.ldnr.f1perfs;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("fr.ldnr.f1prefs", appContext.getPackageName());
+        assertEquals("fr.ldnr.f1perfs", appContext.getPackageName());
     }
 }

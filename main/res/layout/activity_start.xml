@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context="fr.ldnr.f1prefs.StartActivity">
+    tools:context="fr.ldnr.f1perfs.StartActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="368dp"
         android:layout_height="174dp"
-        android:padding="20dp"
+        android:foregroundGravity="center"
         app:srcCompat="@drawable/f1"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />

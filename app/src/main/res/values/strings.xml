@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">F1Perfs</string>
+    <string name="start_txtTitle">Last record :</string>
+    <string name="start_txtTime">Time</string>
+    <string name="start_txtTrack">Track</string>
+    <string name="start_txtPilot">Pilot</string>
+    <string name="start_txtInfos">F1Prefs keep you informed with lasts F1 results in real time, you can also save your owns times to compare with thoses of the bests pilots on Earth.</string>
 </resources>

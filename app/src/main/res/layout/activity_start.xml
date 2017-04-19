@@ -4,22 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="#FFF"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context="fr.ldnr.f1perfs.StartActivity">
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="174dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
+        android:layout_weight="10"
         app:srcCompat="@drawable/f1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="@string/start_txtTitle"
+        android:textAlignment="center"
+        android:textColor="#000" />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
 
         <TableRow
             android:layout_width="match_parent"
@@ -27,33 +39,30 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Dernier temps"
+                android:text="@string/start_txtTime"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Circuit"
+                android:text="@string/start_txtTrack"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Pilote"
+                android:text="@string/start_txtPilot"
                 android:textColor="#000" />
 
         </TableRow>
@@ -64,31 +73,31 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/start_txtTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
                 android:text="00:00.000"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/start_txtTrack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Nürburgring"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/start_txtPilot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:padding="10dp"
                 android:text="John MCFLY"
                 android:textColor="#000" />
@@ -97,11 +106,12 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/txtInfos"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
         android:padding="20dp"
-        android:text="F1Prefs vous tiens informé en temps réel des derniers résultats de la F1,   vous pouvez également y enregistrer vos temps afin de les comparer avec ceux des meilleurs pilotes de la planète."
+        android:text="@string/start_txtInfos"
         android:textAlignment="center"
         android:textColor="#000" />
 

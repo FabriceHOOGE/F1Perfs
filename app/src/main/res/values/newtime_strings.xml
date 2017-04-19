@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newtime_event">event</string>
+    <string name="newtime_race_name">Race name</string>
+    <string name="newtime_pilot_name">Pilot name</string>
+    <string name="newtime_btn_save">Save Informations</string>
+    <string name="newtime_menu_home">Home Page</string>
+    <string name="newtime_menu_perfs">Performance</string>
+    <string name="newtime_title">New time records</string>
+</resources>

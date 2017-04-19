@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="fr.ldnr.f1perfs.NewTimeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/newtime_event"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/newtime_eventname"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/newtime_event"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <EditText
+            android:id="@+id/newtime_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="min : "
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/newtime_secondes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="s. "
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/newtime_millisecondes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="ms"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/newtime_race_name"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/newtime_race_name"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/newtime_event"
+        android:textSize="12sp"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/newtime_pilot_name"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/newtime_pilot_name"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/newtime_event"
+        android:textSize="12sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        >
+        <Button
+            android:id="@+id/newtime_btn_save"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/ic_menu_save"
+            android:onClick="saveNewTime"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

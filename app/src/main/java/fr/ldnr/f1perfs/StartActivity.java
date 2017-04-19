@@ -29,9 +29,9 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(new Intent(this, NewTime.class));
                 return true;
 
-            /*case R.id.menu_search:
+            case R.id.menu_search:
                 startActivity(new Intent(this, SearchActivity.class));
-                return true;*/
+                return true;
 
             case R.id.menu_backHome:
                 startActivity(new Intent(this, StartActivity.class));

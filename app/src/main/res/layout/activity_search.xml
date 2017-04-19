@@ -19,13 +19,16 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Temps - Minute" />
+            android:text="Temps" />
 
-        <SearchView
-            android:layout_width="125dp"
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Min" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Minute" />
 
     </LinearLayout>
 
@@ -39,13 +42,16 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Temps - Secondes" />
+            android:text="Temps" />
 
-        <SearchView
-            android:layout_width="125dp"
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Min" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Secondes" />
 
     </LinearLayout>
 

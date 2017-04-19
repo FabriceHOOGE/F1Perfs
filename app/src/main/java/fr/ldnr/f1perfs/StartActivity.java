@@ -1,7 +1,6 @@
 package fr.ldnr.f1perfs;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
         switch(item.getItemId()) {
 
             case R.id.menu_record:
-                startActivity(new Intent(this, NewTime.class));
+                startActivity(new Intent(this, NewTimeActivity.class));
                 return true;
 
             case R.id.menu_search:

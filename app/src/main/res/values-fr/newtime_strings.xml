@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newtime_event">Evènement</string>
+    <string name="newtime_recorded_time">Temps chronométré</string>
+    <string name="newtime_race_name">Nom du circuit</string>
+    <string name="newtime_pilot_name">Nom du pilote</string>
+    <string name="newtime_title">Nouveau temps</string>
+    <string name="newtime_event_hint">Entrer le nom de l\'évènement…</string>
+    <string name="newtime_race_name_hint">Entrer le nom du circuit…</string>
+    <string name="newtime_pilot_name_hint">Entrer votre nom…</string>
+</resources>

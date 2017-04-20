@@ -39,13 +39,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         public static final String KEY_COL_TIME = "time";
         public static final String KEY_COL_TRACK = "track";
         public static final String KEY_COL_PILOT = "pilot";
-
-        // Index des colonnes
-        public static final int ID_COLUMN = 1;
-        public static final int TIME_COLUMN = 2;
-        public static final int TRACK_COLUMN = 3;
-        public static final int PILOT_COLUMN = 4;
-
     }
 
     /**
@@ -69,14 +62,14 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
     }
 
-    //est appelé lors de la premiere création de la table. Installation de l'application.
+    // est appelé lors de l'instanciation
     @Override
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(DATABASE_CREATE);
     }
 
-    //est utilisée lors de changement de schema dans la base de données
+    // est utilisée lors de changement de schema dans la base de données
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
@@ -132,6 +125,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         // Vérifie si l'insert à réussi
         if(cursor.moveToFirst()) result = true;
 
+        // Fermeture curseur et BDD
         cursor.close();
         closeDB();
 
@@ -217,9 +211,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         closeDB();
 
         return resultQuery;
-
-
-
     }
 
 }

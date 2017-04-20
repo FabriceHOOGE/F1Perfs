@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#FFF"
+    android:background="@color/background"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context="fr.ldnr.f1perfs.StartActivity">
@@ -27,7 +27,7 @@
         android:padding="10dp"
         android:text="@string/start_txtTitle"
         android:textAlignment="center"
-        android:textColor="#000" />
+        android:textColor="@color/textColor" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:padding="10dp"
                 android:text="@string/start_txtTime"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 android:padding="10dp"
                 android:text="@string/start_txtTrack"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
                 android:padding="10dp"
                 android:text="@string/start_txtPilot"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
     </TableRow>
         <TableRow android:layout_width="match_parent">
@@ -79,7 +79,7 @@
                 android:padding="10dp"
                 android:text="-"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
             <TextView
                 android:id="@+id/start_txtTrack"
@@ -90,7 +90,7 @@
                 android:padding="10dp"
                 android:text="-"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
             <TextView
                 android:id="@+id/start_txtPilot"
@@ -101,7 +101,7 @@
                 android:padding="10dp"
                 android:text="-"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/textColor" />
 
         </TableRow>
 </TableLayout>

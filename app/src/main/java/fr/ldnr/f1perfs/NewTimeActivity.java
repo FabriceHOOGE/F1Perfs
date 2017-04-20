@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 public class NewTimeActivity extends AppCompatActivity {
@@ -15,6 +17,11 @@ public class NewTimeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_time);
+
+        AutoCompleteTextView actvRace = (AutoCompleteTextView)findViewById(R.id.newtime_race_name);
+        String[] circuit = {"Bowser Castle","Plain Donut","Rainbow Road","Plain Donut2"};
+        ArrayAdapter<String> aaRace = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,circuit);
+        actvRace.setAdapter(aaRace);
     }
 
 
@@ -27,6 +34,7 @@ public class NewTimeActivity extends AppCompatActivity {
         EditText etMilliSecond = (EditText)findViewById(R.id.newtime_millisecondes);
 
         Log.i("NewTimeActivity","Evènement: " + etEvent.getText() + "|| Course: " + etRace.getText() + "|| Pilote: " + etPilot.getText());
+        Log.i("NewTimeActivity","Temps enregistré : "+etMinute.getText() + ":" + etSecond.getText() + "." + etMilliSecond.getText());
     }
 
 

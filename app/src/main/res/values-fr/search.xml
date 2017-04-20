@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_search_event">Recherche par Evènement</string>
+    <string name="search_search_timeM">Temps</string>
+    <string name="search_search_minute">Minute</string>
+    <string name="search_search_timeS">Temps</string>
+    <string name="search_search_seconds">Secondes</string>
+    <string name="search_searchpilot">Recherche par Pilote</string>
+    <string name="search_searchtrack">Recherche par Circuit</string>
+    <string name="search_search">RECHERCHE</string>
+</resources>

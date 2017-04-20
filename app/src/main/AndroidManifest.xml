@@ -22,7 +22,14 @@
 
         <activity android:name=".NewTimeActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".ChartActivity" />
+        <activity android:name=".ChartActivity">
+
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+
+        </activity>
 
     </application>
 

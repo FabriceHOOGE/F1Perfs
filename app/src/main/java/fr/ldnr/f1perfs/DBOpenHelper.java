@@ -142,7 +142,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      *            = tableau des valeurs à chercher
      *
      */
-    public ArrayList<ArrayList<String>> selectRecord(String[] select, String[] where, String[] values, String orderBy, String limit)
+    public ArrayList<ArrayList<String>> selectRecord(String[] select, String[] where, String[] values, String orderBy, String limit, Boolean distinct)
     {
         // Ouverture BDD
         openDB();
@@ -152,6 +152,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         // Début de la requête
         String selectQuery = "SELECT ";
+
+        // Si DISTINCT
+        if(distinct) selectQuery += "DISTINCT ";
 
         // Pour tous les éléments du tableau select
         for (int i = 0; i < select.length; i++)

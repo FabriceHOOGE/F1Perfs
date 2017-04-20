@@ -42,7 +42,7 @@ public class StartActivity extends AppCompatActivity {
         // Suppression de la BDD
         // deleteDB();
     }
-    
+
 
     /*
     * Récupération du dernier enregistrement et affichage de celui-ci sur la page d'accueil
@@ -60,9 +60,10 @@ public class StartActivity extends AppCompatActivity {
         String[] values = new String[]{}; // Pas de WHERE = pas de valeurs à chercher
         String orderBy = "_id DESC"; // ORDER BY _id DESC
         String limit = "1"; // LIMIT 1
+        Boolean distinct = false; // Pas de DISTINCT
 
         // Fonction qui envoie le SELECT et retourne un tableau
-        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values, orderBy, limit);
+        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values, orderBy, limit, distinct);
 
         // MAJ des TextView s'il y a bien un résultat : indice 0 -> time, 1 -> track, 2 -> pilot
         if(queryResult.get(0).size() == 1 && queryResult.get(1).size() == 1 && queryResult.get(2).size() == 1)
@@ -102,9 +103,10 @@ public class StartActivity extends AppCompatActivity {
         String[] values = new String[]{"Session"}; // WHERE event='Session'
         String orderBy = "pilot DESC"; // ORDER BY pilot DESC
         String limit = "5, 10"; // LIMIT 5, 10 (10 lignes à partir de la n°5)
+        Boolean distinct = false; // Pas de DISTINCT
 
         // Fonction qui envoie le SELECT et retourne un tableau
-        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values, orderBy, limit);
+        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values, orderBy, limit, distinct);
 
         // Parcours du tableau multidimension correspondant au SELECT : indice 0 -> pilot, indice 1 -> time
         for (int i = 0; i < queryResult.get(0).size(); i++)

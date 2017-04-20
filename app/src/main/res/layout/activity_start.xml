@@ -35,7 +35,8 @@
         android:layout_weight="2">
 
         <TableRow
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,7 +69,8 @@
                 android:textColor="@color/textColor" />
 
     </TableRow>
-        <TableRow android:layout_width="match_parent">
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/start_txtTime"

@@ -16,6 +16,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import static android.widget.TableRow.*;
+
 public class ChartActivity extends AppCompatActivity {
 
     LinearLayout layout = null;
@@ -39,14 +41,18 @@ public class ChartActivity extends AppCompatActivity {
         TableLayout table = (TableLayout) layout.findViewById(R.id.chart_table);
         TableRow row = new TableRow(this);
         TextView txt = new TextView(this);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.MATCH_PARENT,2);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT,2);
         txt.setLayoutParams(lp);
         txt.setPadding(10, 10, 10, 10);
-        txt.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        txt.setGravity(Gravity.CENTER);
         txt.setTextColor(ContextCompat.getColor(this, R.color.textColor));
         txt.setText("Aucun résultat trouvé !");
         row.addView(txt);
         table.addView(row);
+    }
+
+    public void fillTableResult() {
+
     }
 
 

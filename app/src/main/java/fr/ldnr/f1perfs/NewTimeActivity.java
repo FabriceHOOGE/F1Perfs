@@ -3,9 +3,11 @@ package fr.ldnr.f1perfs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class NewTimeActivity extends AppCompatActivity {
 
@@ -17,6 +19,14 @@ public class NewTimeActivity extends AppCompatActivity {
 
 
     public void saveNewTime(View view) {
+        EditText etEvent = (EditText)findViewById(R.id.newtime_eventname);
+        EditText etRace = (EditText)findViewById(R.id.newtime_race_name);
+        EditText etPilot = (EditText)findViewById(R.id.newtime_pilot_name);
+        EditText etMinute = (EditText)findViewById(R.id.newtime_minutes);
+        EditText etSecond = (EditText)findViewById(R.id.newtime_secondes);
+        EditText etMilliSecond = (EditText)findViewById(R.id.newtime_millisecondes);
+
+        Log.i("NewTimeActivity","Evènement: " + etEvent.getText() + "|| Course: " + etRace.getText() + "|| Pilote: " + etPilot.getText());
     }
 
 
@@ -34,9 +44,9 @@ public class NewTimeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, NewTimeActivity.class));
                 return true;
 
-            /*case R.id.menu_search:
+            case R.id.menu_search:
                 startActivity(new Intent(this, SearchActivity.class));
-                return true;*/
+                return true;
 
             case R.id.menu_backHome:
                 startActivity(new Intent(this, StartActivity.class));

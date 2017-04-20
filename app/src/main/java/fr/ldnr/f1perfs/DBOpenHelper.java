@@ -118,6 +118,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      */
     public Boolean insertRecord(String event, String time, String track, String pilot)
     {
+        // Ouverture BDD
         openDB();
 
         // INSERT
@@ -147,46 +148,71 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      *            = tableau des valeurs à chercher
      *
      */
-    public ArrayList<ArrayList<String>> selectRecord(String[] select, String[] where, String[] values)
+    public ArrayList<ArrayList<String>> selectRecord(String[] select, String[] where, String[] values, String orderBy, String limit)
     {
+        // Ouverture BDD
         openDB();
 
+        // Déclaration du tableau qui contiendra le résultat du select
         ArrayList<ArrayList<String>> resultQuery = new ArrayList<>();
 
+        // Début de la requête
         String selectQuery = "SELECT ";
 
+        // Pour tous les éléments du tableau select
         for (int i = 0; i < select.length; i++)
         {
+            // Construction requête (ajout colonnne à sélectionner)
             selectQuery += select[i];
+            // Si plusieurs select ajout d'une virgule sauf pour le dernier
             if(i < select.length - 1) selectQuery += ", ";
+            // Ajout d'un tableau pour chaque select dans le tableau résultat
             resultQuery.add(new ArrayList<String>());
         }
 
+        // Construction requête (ajout du FROM nom_de_la_table)
         selectQuery += " FROM " + Constants.TABLE_NAME;
 
+        // si le tableau where contient des valeurs et qu'il y en a autant dans values
         if (where.length > 0 && where.length == values.length)
         {
+            // Déclaration du WHERE
             String selectWhere = " WHERE ";
+            // Parcours des éléments du tableau where
             for (int i = 0; i < where.length; i++)
             {
+                // Construction requête (ajout colonnne où chercher une valeur)
                 selectWhere += where[i] + "=?";
+                // Si plusieurs where ajout du AND sauf pour le dernier
                 if(i < where.length - 1) selectWhere += " AND ";
             }
+            // Construction requête (ajout du WHERE)
             selectQuery += selectWhere;
         }
 
+        // Si ORDER BY -> Construction requête
+        if (orderBy != null) selectQuery += " ORDER BY " + orderBy;
+        // Si LIMIT -> Construction requête
+        if (limit != null) selectQuery += " LIMIT " + limit;
 
+        // Exécution du SELECT + récupération curseur
         Cursor cursor = db.rawQuery(selectQuery, values);
 
+        // Pour chaque élément du tableau select
         for (int i = 0; i < select.length; i++)
         {
+            // On remonte le curseur
             cursor.moveToFirst();
+            // Tant que le curseur n'a pas atteint la dernière ligne
             while(!cursor.isAfterLast()) {
+                // On stocke la valeur de la ligne de la colonne correspondante dans le tableau à retourner à l'index correspondant au select
                 resultQuery.get(i).add(cursor.getString(cursor.getColumnIndex(select[i])));
+                // Ligne suivante
                 cursor.moveToNext();
             }
         }
 
+        // Fermeture curseur et BDD
         cursor.close();
         closeDB();
 

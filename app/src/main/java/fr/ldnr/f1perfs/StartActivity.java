@@ -14,47 +14,54 @@ import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
-    // La classe construction de la BDD
-    DBOpenHelper dbOpenHelper = new DBOpenHelper(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        exempleInsertSelectBDD();
+
+    }
+
+    private void getLastRecord()
+    {
+        // La classe construction de la BDD
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(this);
+
+
+    }
+
+    private void exempleInsertSelectBDD()
+    {
+        // La classe construction de la BDD
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(this);
+
+        // Insert + Mssg Confirmation OU Erreur
         if(dbOpenHelper.insertRecord("Session", "00:00.000", "Nürburgring", "toto tata"))
             Toast.makeText(this, getResources().getString(R.string.dbo_insertWin), Toast.LENGTH_LONG).show();
         else
             Toast.makeText(this, getResources().getString(R.string.dbo_insertError), Toast.LENGTH_LONG).show();
 
+        // Sélection du pilote et du temps, depuis la table Perfs (par défaut), où event == "Session"
+        // Trié par ordre décroissant en fonction du pilote, en limitant la rechercher à 10 résultats à partir du 5ème
+        
+        // Déclaration du SELECT à effectuer
         String[] select = new String[]{"pilot", "time"}; // SELECT pilot, time
         String[] where = new String[]{"event"}; // WHERE event=?
         String[] values = new String[]{"Session"}; // WHERE event='Session'
+        String orderBy = "pilot DESC"; // ORDER BY pilot DESC
+        String limit = "5, 10"; // LIMIT 5, 10 (10 lignes à partir de la n°5)
 
         // Fonction qui envoie le SELECT et retourne un tableau
-        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values);
+        ArrayList<ArrayList<String>> queryResult = dbOpenHelper.selectRecord(select, where, values, orderBy, limit);
 
         // Parcours du tableau multidimension correspondant au SELECT : indice 0 -> pilot, indice 1 -> time
         for (int i = 0; i < queryResult.get(0).size(); i++)
         {
-            Log.i("Performance N°" + i, queryResult.get(0).get(i) + " -> " + queryResult.get(1).get(i));
+            Log.i("N°" + i, queryResult.get(0).get(i) + " -> " + queryResult.get(1).get(i));
         }
-
-    }
-
-    /*********************************************************************************/
-    /** Managing LifeCycle and database open/close operations *********************************/
-    /*********************************************************************************/
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dbOpenHelper.openDB();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        dbOpenHelper.closeDB();
     }
 
 

@@ -1,0 +1,4 @@
+<resources>
+    <string name="dbo_insertError">Error when creating a performance</string>
+    <string name="dbo_insertWin">Performance created and stored in database</string>
+</resources>

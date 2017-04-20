@@ -1,0 +1,4 @@
+<resources>
+    <string name="dbo_insertError">Erreur à l\'enregistrement du temps</string>
+    <string name="dbo_insertWin">Temps créé et enregistré dans la BDD</string>
+</resources>

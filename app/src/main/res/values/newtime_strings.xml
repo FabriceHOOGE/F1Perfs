@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="newtime_event">Event</string>
-    <string name="newtime_recorded_time">Time to record</string>
+    <string name="newtime_recorded_time">Best lap time</string>
     <string name="newtime_race_name">Race name</string>
     <string name="newtime_pilot_name">Pilot name</string>
     <string name="newtime_title">New time records</string>

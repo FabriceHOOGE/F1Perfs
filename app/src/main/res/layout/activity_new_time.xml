@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="fr.ldnr.f1perfs.NewTimeActivity">
+    tools:context="fr.ldnr.f1perfs.NewTimeActivity"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,7 +15,8 @@
         android:text="@string/newtime_event"
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:textColor="@color/textColor" />
 
     <EditText
         android:id="@+id/newtime_eventname"
@@ -27,7 +28,9 @@
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:maxLength="50"/>
+        android:maxLength="50"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -35,14 +38,16 @@
         android:gravity="center_horizontal"
         android:text="@string/newtime_recorded_time"
         android:textSize="20sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@color/textColor"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingLeft="40dp"
-        android:paddingRight="40dp">
+        android:paddingRight="40dp"
+        android:textColor="@color/textColor">
 
         <EditText
             android:id="@+id/newtime_minutes"
@@ -50,35 +55,42 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="2"
-            android:hint="@string/newtime_recorded_time_hint" />
+            android:hint="@string/newtime_recorded_time_hint"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="min : "
             android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/textColor"/>
         <EditText
             android:id="@+id/newtime_secondes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="2"
-            android:hint="@string/newtime_recorded_time_hint"/>
+            android:hint="@string/newtime_recorded_time_hint"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="s. "
             android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/textColor"/>
         <EditText
             android:id="@+id/newtime_millisecondes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/textColor"
             android:inputType="number"
-            android:hint="@string/newtime_recorded_time_ms_hint"/>
+            android:hint="@string/newtime_recorded_time_ms_hint"
+            android:textColorHint="@color/textColorHint"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,7 +98,8 @@
             android:text="ms"
             android:textSize="20sp"
             android:layout_weight="1"
-            android:maxLength="3"/>
+            android:maxLength="3"
+            android:textColor="@color/textColor"/>
 
     </LinearLayout>
     <TextView
@@ -96,7 +109,8 @@
         android:textSize="20sp"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:textColor="@color/textColor" />
 
     <AutoCompleteTextView
         android:id="@+id/newtime_race_name"
@@ -109,7 +123,9 @@
         android:hint="@string/newtime_race_name_hint"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:maxLength="50"/>
+        android:maxLength="50"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -117,7 +133,8 @@
         android:text="@string/newtime_pilot_name"
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:textColor="@color/textColor"/>
 
     <EditText
         android:id="@+id/newtime_pilot_name"
@@ -129,20 +146,22 @@
         android:hint="@string/newtime_pilot_name_hint"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:maxLength="50"/>
+        android:maxLength="50"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:layout_weight="1"
-        >
+        android:background="@drawable/new_time_background_button">
         <Button
             android:id="@+id/newtime_btn_save"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:drawable/ic_menu_save"
-            android:onClick="saveNewTime"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/racing_flag"
+            android:onClick="saveNewTime" />
     </LinearLayout>
 
 

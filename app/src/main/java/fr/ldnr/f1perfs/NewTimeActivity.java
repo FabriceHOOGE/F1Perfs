@@ -18,10 +18,13 @@ public class NewTimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_time);
 
+        //Gestion de l'aide à la saisie dans le champs du nom du circuit
         AutoCompleteTextView actvRace = (AutoCompleteTextView)findViewById(R.id.newtime_race_name);
-        String[] circuit = {"Bowser Castle","Plain Donut","Rainbow Road","Plain Donut2"};
+        String[] circuit = {"Bowser Castle","Plain Donut","Rainbow Road","Plain Donut2","Plain Donut3","Plain Donut4","Plain Donut5","Plain Donut6","Plain Donut7","Plain Donut8"};
         ArrayAdapter<String> aaRace = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,circuit);
         actvRace.setAdapter(aaRace);
+
+
     }
 
 

@@ -17,13 +17,22 @@
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColorHint"/>
 
-    <TextView
-        android:id="@+id/search_search_time"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/search_search_time"
-        android:textSize="20sp"
-        android:textColor="@color/textColor" />
+        android:orientation="horizontal"
+        android:textColor="@color/textColor">
+
+        <TextView
+            android:id="@+id/search_search_time"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/search_search_time"
+            android:textSize="20sp"
+            android:textColor="@color/textColor"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +60,7 @@
             android:inputType="textPersonName"
             android:text="@string/search_search_max"
             android:textColor="@color/textColor"
-            android:textColorHint="@color/textColorHint" />
+            android:textColorHint="@color/textColorHint"/>
 
     </LinearLayout>
 
@@ -72,19 +81,13 @@
         android:textColorHint="@color/textColorHint"/>
 
     <Button
-        android:background="@drawable/new_time_background_button"
         android:id="@+id/search_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/new_time_background_button"
         android:text="@string/search_search"
         android:textSize="20sp"
-        android:textColor="@color/textColor"/>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/racing_flag" />
+        android:textColor="@color/textColor" />
 
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package fr.ldnr.f1perfs;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,23 +23,30 @@ public class SearchActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
 
+        //selon l'orientation l'application utilise le bon layout.
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            setContentView(R.layout.activity_search_h);
+            Log.i("NewTimeActivity", "onCreate : landscape");
+        }else
+        {
+            setContentView(R.layout.activity_search);
+        }
     }
 
     //methode à utiliser pour la recherche en base de données
     public void searchActivity(View View) {
         AutoCompleteTextView actvSearchEvent = (AutoCompleteTextView) findViewById(R.id.search_search_event);
-        TextView tvSearchTimeM = (TextView) findViewById(R.id.search_search_timeM);
-        EditText etSearchMinute = (EditText) findViewById(R.id.search_search_minute);
-        TextView tvSearchTimeS = (TextView) findViewById(R.id.search_search_timeS);
-        EditText etSearchSeconds = (EditText) findViewById(R.id.search_search_seconds);
+        TextView tvSearchTime = (TextView) findViewById(R.id.search_search_time);
+        EditText etSearchMin = (EditText) findViewById(R.id.search_search_min);
+        EditText etSearchMax = (EditText) findViewById(R.id.search_search_max);
         AutoCompleteTextView actvSearchPilot = (AutoCompleteTextView) findViewById(R.id.search_searchpilot);
         AutoCompleteTextView actvSearchTrack = (AutoCompleteTextView) findViewById(R.id.search_searchtrack);
         Button btSearchSearch = (Button) findViewById(R.id.search_search);
 
-        Log.i("SearchActivity", "Evenement: "+ actvSearchEvent.getText()+ "|| Temps: "+ tvSearchTimeM.getText()+"||Minute: "+etSearchMinute.getText()+"||" +
-                "|| Temps: "+tvSearchTimeS.getText()+"|| Secondes: "+etSearchSeconds.getText()+"|| Pilote: "+actvSearchPilot.getText()+"|| Circuit: "+actvSearchTrack.getText());
+        Log.i("SearchActivity", "Evenement: "+ actvSearchEvent.getText()+ "|| Temps: "+ tvSearchTime.getText()+"||Min: "+etSearchMin.getText()+"||" +
+                "|| Max: "+etSearchMax.getText()+"|| Pilote: "+actvSearchPilot.getText()+"|| Circuit: "+actvSearchTrack.getText());
     }
 
     @Override

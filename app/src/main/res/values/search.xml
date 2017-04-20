@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="search_search_event">Search by Event</string>
-    <string name="search_search_timeM">Time</string>
-    <string name="search_search_minute">Minute</string>
-    <string name="search_search_timeS">Time</string>
-    <string name="search_search_seconds">Seconds</string>
+    <string name="search_search_time">Search by Time</string>
+    <string name="search_search_min">Lower</string>
+    <string name="search_search_max">Higher</string>
     <string name="search_searchpilot">Search by Pilot</string>
     <string name="search_searchtrack">Search by Track</string>
     <string name="search_search">SEARCH</string>

@@ -87,14 +87,14 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      *
      * @throws SQLiteException
      */
-    public void openDB() throws SQLiteException
+    private void openDB() throws SQLiteException
     {
         try { db = getWritableDatabase(); }
         catch (SQLiteException ex) { db = getReadableDatabase(); }
     }
 
     /** Fermeture BDD */
-    public void closeDB() {
+    private void closeDB() {
         db.close();
     }
 

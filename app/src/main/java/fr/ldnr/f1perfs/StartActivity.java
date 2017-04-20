@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        // Connexion à la BDD
+        // Connexion à la BDD (et éventuellement création)
         dbOpenHelper = new DBOpenHelper(this);
 
         // Insertion multiple pour test
@@ -41,9 +41,8 @@ public class StartActivity extends AppCompatActivity {
 
         // Suppression de la BDD
         // deleteDB();
-
-
     }
+    
 
     /*
     * Récupération du dernier enregistrement et affichage de celui-ci sur la page d'accueil

@@ -50,14 +50,14 @@ public class NewTimeActivity extends AppCompatActivity {
         EditText etSecond = (EditText)findViewById(R.id.newtime_secondes);
         EditText etMilliSecond = (EditText)findViewById(R.id.newtime_millisecondes);
 
-        Log.i("NewTimeActivity","Evènement: " + etEvent.getText() + "|| Course: " + etRace.getText() + "|| Pilote: " + etPilot.getText());
-        Log.i("NewTimeActivity","Temps enregistré : "+etMinute.getText() + ":" + etSecond.getText() + "." + etMilliSecond.getText());
+        boolean validEntry = true;
+        validEntry = validEntry && Validator.isValidNewTimeEvent(etEvent.getText().toString());
+        validEntry = validEntry && Validator.isValidNewTimeRace(etRace.getText().toString());
+        validEntry = validEntry && Validator.isValidNewTimePilot(etPilot.getText().toString());
+        validEntry = validEntry && Validator.isValidNewTimeLapTime(etMinute.getText().toString(),etSecond.getText().toString(),etMilliSecond.getText().toString());
 
-        if(Integer.parseInt(etMinute.getText().toString()) > 60 || Integer.parseInt(etSecond.getText().toString()) > 60)
-        {
-            Toast.makeText(this,"Attention le nombre de minute n'est pas correcte", Toast.LENGTH_LONG);
-            Log.i("NewTimeActivity","Attention le nombre de minutes n'est pas bon");
-        }
+        Log.i("NewTimeActivity","Evènement: " + etEvent.getText() + "|| Enregistrement valide: " + validEntry);
+        
     }
 
 

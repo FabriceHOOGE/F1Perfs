@@ -35,6 +35,9 @@ public class Validator {
     public static boolean isValidNewTimeLapTime(String toCheckMinute, String toCheckSecond, String toCheckMillisecond)
     {
         boolean result = true;
+        result = result && !toCheckMinute.isEmpty();
+        result = result && !toCheckSecond.isEmpty();
+        result = result && !toCheckMillisecond.isEmpty();
         result = result && Validator.isValidMinutesSecond(toCheckMinute);
         result = result && Validator.isValidMinutesSecond(toCheckSecond);
         return result;

@@ -6,9 +6,11 @@
     <string name="newtime_pilot_name">Pilot name</string>
     <string name="newtime_title">New time records</string>
     <string name="newtime_event_hint">Enter the event name…</string>
-    <string name="newtime_race_name_hint">Enter the race name…</string>
+    <string name="newtime_race_name_hint">Enter the track name…</string>
     <string name="newtime_pilot_name_hint">Enter your name…</string>
     <string name="newtime_recorded_time_hint">00</string>
     <string name="newtime_recorded_time_ms_hint">000</string>
-
+    <string name="newtime_record_fail">Fail to save !!</string>
+    <string name="newtime_record_successful">New time saved</string>
+    <string name="newtime_invalid_info">Invalid information</string>
 </resources>

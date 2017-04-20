@@ -8,4 +8,7 @@
     <string name="newtime_event_hint">Entrer le nom de l\'évènement…</string>
     <string name="newtime_race_name_hint">Entrer le nom du circuit…</string>
     <string name="newtime_pilot_name_hint">Entrer votre nom…</string>
+    <string name="newtime_record_fail">Sauvegarde échouée</string>
+    <string name="newtime_record_successful">Sauvegarde réussie</string>
+    <string name="newtime_invalid_info">Informations non valides</string>
 </resources>

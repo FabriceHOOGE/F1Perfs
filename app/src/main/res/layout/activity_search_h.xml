@@ -41,24 +41,46 @@
         android:textColor="@color/textColor">
 
         <EditText
-            android:id="@+id/search_search_min"
+            android:id="@+id/search_search_minute_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/search_search_min"
+            android:inputType="number"
+            android:hint="@string/search_search_minute_min"
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColorHint" />
 
         <EditText
-            android:id="@+id/search_search_max"
+            android:id="@+id/search_search_seconde_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/search_search_max"
+            android:inputType="number"
+            android:hint="@string/search_search_seconde_min"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint"/>
+
+        <EditText
+            android:id="@+id/search_search_minute_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/search_search_minute_max"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint" />
+
+        <EditText
+            android:id="@+id/search_search_seconde_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/search_search_seconde_max"
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColorHint"/>
 
@@ -87,7 +109,7 @@
         android:background="@drawable/new_time_background_button"
         android:text="@string/search_search"
         android:textSize="20sp"
-        android:textColor="@color/textColor" />
-
+        android:textColor="@color/textColor"
+        android:onClick="searchTime"/>
 
 </LinearLayout>

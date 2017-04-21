@@ -2,8 +2,10 @@
 <resources>
     <string name="search_search_event">Recherche par Evènement</string>
     <string name="search_search_time">Recherche par Temps</string>
-    <string name="search_search_min">Minimum</string>
-    <string name="search_search_max">Maximum</string>
+    <string name="search_search_minute_min">Minute Minimum</string>
+    <string name="search_search_seconde_min">Secondes Minimum</string>
+    <string name="search_search_minute_max">Minute Max</string>
+    <string name="search_search_seconde_max">Secondes Max</string>
     <string name="search_searchpilot">Recherche par Pilote</string>
     <string name="search_searchtrack">Recherche par Circuit</string>
     <string name="search_search">RECHERCHE</string>

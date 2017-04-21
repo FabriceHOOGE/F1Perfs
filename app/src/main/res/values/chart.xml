@@ -1,0 +1,5 @@
+<resources>
+    <string name="chart_title">Performance\'s Chart</string>
+    <string name="chart_hTitle">Pilots</string>
+    <string name="chart_vTitle">Time (min)</string>
+</resources>

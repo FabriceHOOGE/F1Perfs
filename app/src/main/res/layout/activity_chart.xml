@@ -11,20 +11,25 @@
     tools:context="fr.ldnr.f1perfs.ChartActivity">
 
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/chart_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#CCC"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:orientation="vertical">
 
-    </android.support.constraint.ConstraintLayout>
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/graph" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="3">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
+                android:imeOptions="actionNext"
                 android:hint="@string/newtime_event_hint"
                 android:textSize="20sp"
                 android:layout_marginLeft="20dp"
@@ -68,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/newtime_recorded_time_hint"
                     android:inputType="number"
+                    android:imeOptions="actionNext"
                     android:maxLength="2"
                     android:textColor="@color/textColor"
                     android:textColorHint="@color/textColorHint" />
@@ -87,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/newtime_recorded_time_hint"
                     android:inputType="number"
+                    android:imeOptions="actionNext"
                     android:maxLength="2"
                     android:textColor="@color/textColor"
                     android:textColorHint="@color/textColorHint" />
@@ -106,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/newtime_recorded_time_ms_hint"
                     android:inputType="number"
+                    android:imeOptions="actionNext"
                     android:textColor="@color/textColor"
                     android:textColorHint="@color/textColorHint" />
 
@@ -146,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
+                android:imeOptions="actionNext"
                 android:textSize="20sp"
                 android:layout_marginBottom="40dp"
                 android:hint="@string/newtime_race_name_hint"
@@ -175,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
+                android:imeOptions="actionDone"
                 android:textSize="20sp"
                 android:hint="@string/newtime_pilot_name_hint"
                 android:layout_marginLeft="20dp"

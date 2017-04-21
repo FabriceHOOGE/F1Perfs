@@ -12,65 +12,78 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/chart_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:padding="10dp"
-        android:background="#CCC">
+        android:background="#CCC"
+        android:padding="10dp">
 
     </android.support.constraint.ConstraintLayout>
 
-    <TableLayout
-        android:id="@+id/chart_table"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:id="@+id/chart_table"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@string/start_txtEvent"
-                android:textAlignment="center"
-                android:textColor="@color/textColor" />
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@string/start_txtTime"
-                android:textAlignment="center"
-                android:textColor="@color/textColor" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@string/start_txtTrack"
-                android:textAlignment="center"
-                android:textColor="@color/textColor" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/start_txtEvent"
+                        android:textAlignment="center"
+                        android:textColor="@color/textColor" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@string/start_txtPilot"
-                android:textAlignment="center"
-                android:textColor="@color/textColor" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/start_txtTime"
+                        android:textAlignment="center"
+                        android:textColor="@color/textColor" />
 
-    </TableLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/start_txtTrack"
+                        android:textAlignment="center"
+                        android:textColor="@color/textColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/start_txtPilot"
+                        android:textAlignment="center"
+                        android:textColor="@color/textColor" />
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

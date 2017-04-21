@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Kévin on 19/04/2017.
@@ -48,7 +45,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             + Constants.TABLE_NAME + "("
             + Constants.KEY_COL_ID + " integer primary key autoincrement, "
             + Constants.KEY_COL_EVENT + " TEXT, "
-            + Constants.KEY_COL_TIME + " TEXT, "
+            + Constants.KEY_COL_TIME + " integer, "
             + Constants.KEY_COL_TRACK + " TEXT, "
             + Constants.KEY_COL_PILOT + " TEXT) ";
 
@@ -109,7 +106,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      *            = pilot name to record
      *
      */
-    public Boolean insertRecord(String event, String time, String track, String pilot)
+    public Boolean insertRecord(String event, int time, String track, String pilot)
     {
         // Ouverture BDD
         openDB();
@@ -118,7 +115,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO "+Constants.TABLE_NAME+" (event, time, track, pilot) VALUES (?,?,?,?)", new Object[]{event, time, track, pilot});
 
         // SELECT pour tester l'insert
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM "+Constants.TABLE_NAME+" WHERE event=? AND time=? AND track=? AND PILOT=?",new String[]{event, time, track, pilot});
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM "+Constants.TABLE_NAME+" WHERE event=? AND time=? AND track=? AND PILOT=?",new String[]{event, time+"", track, pilot});
 
         Boolean result = false;
 
@@ -214,6 +211,25 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         closeDB();
 
         return resultQuery;
+    }
+
+    public Boolean isCorrect(ArrayList<ArrayList<String>> queryResult)
+    {
+        Boolean correct = false;
+        if(queryResult.size() > 0 && queryResult.get(0).size() > 0)
+        {
+            if(queryResult.size() > 1)
+            {
+                int nb = 0;int i;
+                for(i=0;i<queryResult.size();i++)
+                {
+                    nb += queryResult.get(i).size();
+                }
+                if(nb == queryResult.get(0).size() * i) correct = true;
+            }
+            else correct = true;
+        }
+        return correct;
     }
 
 }

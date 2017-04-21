@@ -55,4 +55,47 @@ public class Validator {
         result = result && (Integer.parseInt(toCheck)<60);
         return result;
     }
+
+    public static String millisecondToTime(int millisecond)
+    {
+        String sMinute,sSecond,sMillisecond;
+        int iMinute, iSecond, iMillisecond;
+
+        iMillisecond = millisecond%1000;
+        millisecond = millisecond - iMillisecond;
+        iSecond = (millisecond/1000)%60;
+        millisecond = millisecond - iSecond*1000;
+        iMinute = millisecond/60000;
+
+        sMinute = new Integer(iMinute).toString();
+        sSecond = new Integer(iSecond).toString();
+        sMillisecond = new Integer(iMillisecond).toString();
+        return Validator.formatTime(sMinute,sSecond,sMillisecond);
+    }
+
+    public static String formatTime(String minute,String second, String millisecond)
+    {
+        String result = "";
+        if(minute.length()<2)
+            result = result +"0";
+        result = result + minute+":";
+
+        if(second.length()<2)
+            result=result + "0";
+        result = result + second +".";
+
+        if(millisecond.length()<3)
+        {
+            if(millisecond.length()<2)
+                result = result+"0";
+            result = result+"0";
+        }
+        result = result+millisecond;
+        return result;
+    }
+
+    public static int timeToMillisecond(String minute, String second, String millisecond)
+    {
+        return((Integer.parseInt(minute)*60000) + (Integer.parseInt(second)*1000) + Integer.parseInt(millisecond));
+    }
 }

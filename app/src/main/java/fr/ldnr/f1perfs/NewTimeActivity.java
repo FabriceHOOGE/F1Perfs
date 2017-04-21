@@ -97,7 +97,7 @@ public class NewTimeActivity extends AppCompatActivity {
                 Toast.makeText(this,R.string.newtime_record_successful,Toast.LENGTH_LONG).show();
                 //Mise a zéro du formulaire
                 this.resetForm();
-                //Vidage des
+                //Mise à zéro des variables membres
                 this.setsPilot("");
                 this.setsTrack("");
                 this.setsEvent("");
@@ -163,38 +163,10 @@ public class NewTimeActivity extends AppCompatActivity {
 
     public void setiTime(String minute, String second, String millisecond)
     {
-        this.iTime = this.timeToMillisecond(minute, second, millisecond);
+        this.iTime = Validator.timeToMillisecond(minute, second, millisecond);
         this.isValidForm = this.isValidForm && Validator.isValidNewTimeLapTime(minute, second, millisecond);
     }
 
-    private int timeToMillisecond(String minute, String second, String millisecond)
-    {
-        return((Integer.parseInt(minute)*60000) + (Integer.parseInt(second)*1000) + Integer.parseInt(millisecond));
-    }
-
-
-
-    //permet de formater la chaine de caractère concernant le temps saisi
-    private String formatTime(String minute,String second, String millisecond)
-    {
-        String result = "";
-        if(minute.length()<2)
-            result = result +"0";
-        result = result + minute+":";
-
-        if(second.length()<2)
-            result=result + "0";
-        result = result + second +".";
-
-        if(millisecond.length()<3)
-        {
-            if(millisecond.length()<2)
-                result = result+"0";
-            result = result+"0";
-        }
-        result = result+millisecond;
-        return result;
-    }
 
 
     @Override

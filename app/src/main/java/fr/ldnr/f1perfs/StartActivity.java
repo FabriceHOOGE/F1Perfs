@@ -69,7 +69,7 @@ public class StartActivity extends AppCompatActivity {
         // MAJ des TextView s'il y a bien un résultat : indice 0 -> time, 1 -> track, 2 -> pilot
         if(queryResult.get(0).size() == 1 && dbOpenHelper.isCorrect(queryResult))
         {
-            tvTime.setText(queryResult.get(0).get(0));
+            tvTime.setText(Validator.millisecondToTime(Integer.parseInt(queryResult.get(0).get(0))));
             tvTrack.setText(queryResult.get(1).get(0));
             tvPilot.setText(queryResult.get(2).get(0));
         }

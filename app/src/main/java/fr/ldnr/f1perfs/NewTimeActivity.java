@@ -17,7 +17,10 @@ import java.util.ArrayList;
 
 public class NewTimeActivity extends AppCompatActivity {
 
-    DBOpenHelper dboh;
+    private DBOpenHelper dboh;
+    private String sEvent, sTrack, sPilot;
+    private int iTime;
+    private boolean isValidForm = true;
 
 
 
@@ -38,21 +41,26 @@ public class NewTimeActivity extends AppCompatActivity {
         //Création de l'objet pour accéder à la base de données
         dboh = new DBOpenHelper(this);
         setAutoCompleteEditText();
+
     }
 
+    //cette fonction permet de mettre en place l'autocomplétion sur le champs "nom du circuit"
     private void setAutoCompleteEditText()
     {
-        AutoCompleteTextView actvRace = (AutoCompleteTextView)findViewById(R.id.newtime_race_name);
+        //Déclaration des variables pour la requete en base de données
         String[] select = new String[]{"track"};
         String[] where = new String[]{};
         String[] values = new String[]{};
         String orderBy = null;
         String limit = null;
+        //recupération de l'objet de l'autocomplétion
+        AutoCompleteTextView actvRace = (AutoCompleteTextView)findViewById(R.id.newtime_race_name);
 
+        //Récupération des données pour le champs en autocomplétion
         ArrayList<ArrayList<String>> allTrack = dboh.selectRecord(select,where,values,orderBy,limit,true);
-
-        //String[] track = {"Bowser Castle","Plain Donut","Rainbow Road","Plain Donut2","Plain Donut3","Plain Donut4","Plain Donut5","Plain Donut6","Plain Donut7","Plain Donut8"};
+        //création de l'adapter qui sera associé au champs
         ArrayAdapter<String> aaRace = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,allTrack.get(0));
+        //Association de l'adapter et du champs à autocompléter
         actvRace.setAdapter(aaRace);
     }
 
@@ -64,69 +72,109 @@ public class NewTimeActivity extends AppCompatActivity {
     public void saveNewTime(View view) {
         //Permet de savoir si l'insertion des données a reussi
         boolean validInsert = false;
-        //permet de savoir si les informations saisies sont correctes
-        boolean validEntry = true;
-        //Permet de stocker les inforamtions du formulaire
-        String sEvent, sTrack, sPilot, sMinute, sSecond, sMillisecond, sTime;
 
-
-        //Récupération des éléments de champs du formulaire
-        EditText etEvent = (EditText)findViewById(R.id.newtime_eventname);
-        EditText etTrack = (EditText)findViewById(R.id.newtime_race_name);
-        EditText etPilot = (EditText)findViewById(R.id.newtime_pilot_name);
-        EditText etMinute = (EditText)findViewById(R.id.newtime_minutes);
-        EditText etSecond = (EditText)findViewById(R.id.newtime_secondes);
-        EditText etMilliSecond = (EditText)findViewById(R.id.newtime_millisecondes);
-
-        //A partir des éléments du formulaire, les variable de type String sont initialisées
-        sEvent = etEvent.getText().toString();
-        sTrack = etTrack.getText().toString();
-        sPilot = etPilot.getText().toString();
-        sMinute = etMinute.getText().toString();
-        sSecond = etSecond.getText().toString();
-        sMillisecond = etMilliSecond.getText().toString();
-        sTime = formatTime(sMinute,sSecond,sMillisecond);
-
-        //On valide si les informations entrées correspondent aux caractéristiques attendues
-        //Grace à la classe Validator
-        validEntry = validEntry && Validator.isValidNewTimeEvent(sEvent);
-        validEntry = validEntry && Validator.isValidNewTimeRace(sTrack);
-        validEntry = validEntry && Validator.isValidNewTimePilot(sPilot);
-        validEntry = validEntry && Validator.isValidNewTimeLapTime(sMinute,sSecond,sMillisecond);
-
-        Log.i("NewTimeActivity","Evènement: " + sEvent + "|| temps: | " + sTime + " |" + sMinute +  "|" + sMillisecond + "|" + sSecond);
+        this.setsEvent(((EditText)findViewById(R.id.newtime_eventname)).getText().toString());
+        this.setsPilot(((EditText)findViewById(R.id.newtime_pilot_name)).getText().toString());
+        this.setsTrack(((EditText)findViewById(R.id.newtime_race_name)).getText().toString());
+        this.setiTime(((EditText)findViewById(R.id.newtime_minutes)).getText().toString(),
+                ((EditText)findViewById(R.id.newtime_secondes)).getText().toString(),
+                ((EditText)findViewById(R.id.newtime_millisecondes)).getText().toString());
 
         //Si les informations sont valides on insert les données
-        if(validEntry)
+        if(this.isValidForm)
         {
-            validInsert = dboh.insertRecord(sEvent, sTime,sTrack,sPilot);
-            //Si l'insertion a échoué, un log d'erreur est émis/
+            validInsert = dboh.insertRecord(sEvent, iTime,sTrack,sPilot);
+            //Si l'insertion a échoué, un log d'erreur est émis
             //Et un message de type Toast est envoyé à l'utilisateur.
             if(!validInsert)
             {
                 Log.e("NewTimeActivity", "saveNewTime: error during new time insertion!!!");
-                Toast.makeText(this,"test échouée",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,R.string.newtime_record_fail,Toast.LENGTH_LONG).show();
             }else
             {
                 //Si l'insertion à réussi l'utilisateur est alerté par un message de type Toast
                 //Le formulaire est réinitialisé
-                Toast.makeText(this,"test reussi",Toast.LENGTH_LONG).show();
-                etEvent.setText("");
-                etTrack.setText("");
-                etPilot.setText("");
-                etMinute.setText("");
-                etSecond.setText("");
-                etMilliSecond.setText("");
-
+                Toast.makeText(this,R.string.newtime_record_successful,Toast.LENGTH_LONG).show();
+                //Mise a zéro du formulaire
+                this.resetForm();
+                //Vidage des
+                this.setsPilot("");
+                this.setsTrack("");
+                this.setsEvent("");
+                this.setiTime("0","0","0");
                 //Mise à jour de l'aide à la saisi sur le nom du circuit.
                 setAutoCompleteEditText();
             }
         }else
         {
-            Toast.makeText(this,"test invalide",Toast.LENGTH_LONG).show();
+            //On averti l'utilisateur que les données saisies ne sont pas valides
+            Toast.makeText(this,R.string.newtime_invalid_info,Toast.LENGTH_LONG).show();
         }
+        this.isValidForm = true;
     }
 
+    private void resetForm()
+    {
+        ((EditText)findViewById(R.id.newtime_eventname)).setText("");
+        ((EditText)findViewById(R.id.newtime_pilot_name)).setText("");
+        ((EditText)findViewById(R.id.newtime_race_name)).setText("");
+        ((EditText)findViewById(R.id.newtime_minutes)).setText("");
+        ((EditText)findViewById(R.id.newtime_secondes)).setText("");
+        ((EditText)findViewById(R.id.newtime_millisecondes)).setText("");
+    }
+
+    public String getsEvent()
+    {
+        return sEvent;
+    }
+
+    public String getsTrack()
+    {
+        return sTrack;
+    }
+
+    public String getsPilot()
+    {
+        return sPilot;
+    }
+
+    public int getsTime()
+    {
+        return iTime;
+    }
+
+    public void setsEvent(String event)
+    {
+        this.sEvent = event;
+        this.isValidForm =  this.isValidForm && Validator.isValidNewTimeEvent(event);
+    }
+
+    public void setsTrack(String track)
+    {
+        this.sTrack = track;
+        this.isValidForm = this.isValidForm && Validator.isValidNewTimeRace(track);
+    }
+
+    public void setsPilot(String pilot)
+    {
+        this.sPilot = pilot;
+        this.isValidForm = this.isValidForm && Validator.isValidNewTimePilot(pilot);
+    }
+
+    public void setiTime(String minute, String second, String millisecond)
+    {
+        this.iTime = this.timeToMillisecond(minute, second, millisecond);
+        this.isValidForm = this.isValidForm && Validator.isValidNewTimeLapTime(minute, second, millisecond);
+    }
+
+    private int timeToMillisecond(String minute, String second, String millisecond)
+    {
+        return((Integer.parseInt(minute)*60000) + (Integer.parseInt(second)*1000) + Integer.parseInt(millisecond));
+    }
+
+
+
+    //permet de formater la chaine de caractère concernant le temps saisi
     private String formatTime(String minute,String second, String millisecond)
     {
         String result = "";

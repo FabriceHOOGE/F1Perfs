@@ -52,7 +52,7 @@ public class Validator {
     private static boolean isValidMinutesSecond(String toCheck)
     {
         boolean result = true;
-        result = result && (Integer.parseInt(toCheck)<=60);
+        result = result && (Integer.parseInt(toCheck)<60);
         return result;
     }
 }

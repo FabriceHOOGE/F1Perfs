@@ -53,6 +53,7 @@ public class Validator {
     {
         boolean result = true;
         result = result && (Integer.parseInt(toCheck)<60);
+        result = result && (!toCheck.isEmpty());
         return result;
     }
 
@@ -96,6 +97,10 @@ public class Validator {
 
     public static int timeToMillisecond(String minute, String second, String millisecond)
     {
+        if(!Validator.isValidMinutesSecond(minute))
+            minute = "0";
+        if(!Validator.isValidMinutesSecond(second))
+            second = "0";
         return((Integer.parseInt(minute)*60000) + (Integer.parseInt(second)*1000) + Integer.parseInt(millisecond));
     }
 }

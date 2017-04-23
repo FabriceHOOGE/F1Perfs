@@ -28,6 +28,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.widget.TableRow.*;
 
@@ -36,6 +37,8 @@ public class ChartActivity extends AppCompatActivity {
     DBOpenHelper dbOpenHelper;
     LinearLayout layout = null;
     String[] pilots;
+    String event, pilot, track;
+    int min, max;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,26 +51,19 @@ public class ChartActivity extends AppCompatActivity {
         // Deserialisation du fichier xml
         layout = (LinearLayout) LinearLayout.inflate(this, R.layout.activity_chart, null);
 
+        event = getIntent().getStringExtra("event");
+        pilot = getIntent().getStringExtra("pilot");
+        track = getIntent().getStringExtra("track");
+
+        min = getIntent().getIntExtra("minutemin",0);
+        max = getIntent().getIntExtra("minutemax",0);
+
         fillTableResult();
 
         generateChart();
 
         setContentView(layout);
 
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        String event = data.getStringExtra("event");
-        String pilot = data.getStringExtra("pilot");
-        String track = data.getStringExtra("track");
-
-        int min = data.getIntExtra("minutemin",0);
-        int max = data.getIntExtra("minutemax",0);
-
-        Log.i("TEST","\nEvent : " + event + "\nPilot : " + pilot + "\nTrack : " + track + "\nMin : " + min + "\nMax : " + max);
 
     }
 
@@ -102,22 +98,22 @@ public class ChartActivity extends AppCompatActivity {
 
         // Courbe 1 TEST
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 100),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(0, 9.55),
+                new DataPoint(1, 9.25),
+                new DataPoint(2, 8.30),
+                new DataPoint(3, 9),
+                new DataPoint(4, 9.1)
         });
         series.setTitle("Track 1");
         graph.addSeries(series);
 
         // Courbe 2 TEST
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 5),
-                new DataPoint(1, 2),
-                new DataPoint(2, 3),
-                new DataPoint(3, 9),
-                new DataPoint(4, 0)
+                new DataPoint(0, 4.6),
+                new DataPoint(1, 4.7),
+                new DataPoint(2, 4.5),
+                new DataPoint(3, 4.6),
+                new DataPoint(4, 4.9)
         });
         series2.setTitle("Track 2");
         // Couleur courbe 2
@@ -130,6 +126,23 @@ public class ChartActivity extends AppCompatActivity {
         graph.getSecondScale().setMaxY(10);
         // Couleur axe vertical 2
         graph.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
+        // Courbe 3 TEST
+        LineGraphSeries<DataPoint> series3 = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 8),
+                new DataPoint(1, 2.4),
+                new DataPoint(2, 4),
+                new DataPoint(3, 8.5),
+                new DataPoint(4, 2.9)
+        });
+        series3.setTitle("Track 3");
+        // Couleur courbe 2
+        series3.setColor(Color.GREEN);
+
+        // GetSecondScale apparemment obligatoire
+        graph.getSecondScale().addSeries(series3);
+
+
     }
 
 
@@ -179,8 +192,10 @@ public class ChartActivity extends AppCompatActivity {
             {
                 TableRow row = new TableRow(this);
 
-                for(int j = 0;j < queryResult.size();j++)
-                    row.addView(setTableResult(queryResult.get(j).get(i)));
+                row.addView(setTableResult(queryResult.get(0).get(i)));
+                row.addView(setTableResult(Validator.millisecondToTime(Integer.parseInt(queryResult.get(1).get(i)))));
+                row.addView(setTableResult(queryResult.get(2).get(i)));
+                row.addView(setTableResult(queryResult.get(3).get(i)));
 
                 table.addView(row);
             }
@@ -203,8 +218,29 @@ public class ChartActivity extends AppCompatActivity {
     {
         // Déclaration du SELECT à effectuer
         String[] select = new String[]{"event", "time", "track", "pilot"}; // SELECT pilot, time
-        String[] where = new String[]{}; // Pas de WHERE
-        String[] values = new String[]{}; // Pas de WHERE
+
+        String[] where;
+        String[] values;
+
+        if((event == null || event.trim().isEmpty()) && (track == null || track.trim().isEmpty()) && (pilot == null || pilot.trim().isEmpty()) && min == 0 && max == 0)
+        {
+            where = new String[]{}; // Pas de WHERE
+            values = new String[]{}; // Pas de WHERE
+        }
+        else
+        {
+            List<String> tmpWhere = new ArrayList<>();
+            List<String> tmpValues = new ArrayList<>();
+            if(event != null){tmpWhere.add("event");tmpValues.add(event);}
+            if(track != null){tmpWhere.add("track");tmpValues.add(track);}
+            if(pilot != null){tmpWhere.add("pilot");tmpValues.add(pilot);}
+
+            where = tmpWhere.toArray(new String[0]);
+            values = tmpValues.toArray(new String[0]);
+        }
+
+
+
         String orderBy = "time"; // ORDER BY time
         String limit = "6"; // LIMIT 6
         Boolean distinct = false; // Pas de DISTINCT

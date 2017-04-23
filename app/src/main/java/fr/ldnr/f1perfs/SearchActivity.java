@@ -60,14 +60,16 @@ public class SearchActivity extends AppCompatActivity{
         minutemax = Validator.timeToMillisecond(etSearchMinuteMax.getText().toString(), etSearchSecondeMax.getText().toString(), "0");
 
         //envoi des données
-        Intent intent = new Intent(this, ChartActivity.class);
+        Intent intent = new Intent(SearchActivity.this, ChartActivity.class);
         intent.putExtra("event", actvSearchEvent.getText().toString());
         intent.putExtra("pilot", actvSearchPilot.getText().toString());
         intent.putExtra("track", actvSearchTrack.getText().toString());
         intent.putExtra("minutemin", minutemin);
         intent.putExtra("minutemax", minutemax);
 
-        startActivity(intent);
+        setResult(0, intent);
+
+        startActivityForResult(intent, 0);
 
     }
 

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -188,6 +189,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         if (orderBy != null) selectQuery += " ORDER BY " + orderBy;
         // Si LIMIT -> Construction requête
         if (limit != null) selectQuery += " LIMIT " + limit;
+
+        Log.i("SQL REQUEST", selectQuery);
 
         // Exécution du SELECT + récupération curseur
         Cursor cursor = db.rawQuery(selectQuery, values);

@@ -160,16 +160,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_weight="1"
-        android:background="@drawable/new_time_background_button">
-        <Button
-            android:id="@+id/newtime_btn_save"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/racing_flag"
-            android:onClick="saveNewTime" />
-    </LinearLayout>
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/new_time_background_button"
+            android:gravity="center"
+            android:padding="40dp">
+
+            <Button
+                android:id="@+id/newtime_btn_save"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/racing_flag"
+                android:onClick="saveNewTime" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
